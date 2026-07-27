@@ -1,4 +1,5 @@
 import streamlit as st
+import IPython
 from IPython.core.prefilter import PythonOpsChecker
 import os
 import time
