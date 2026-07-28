@@ -89,10 +89,10 @@ def prompt_reader():
 
 
 
-prompt = """I want complete Professional
-Resume with Dynamic Design using Advanced CSS and JS
-and must show user input details
-System instructions: Only Give HTML code as output"""
+prompt = """you are a helpful ai assistant  with a job resume maker , your task is to give html gormat resume ,with a proper designing using recent html js css code , with professional degsine format , user will upload data and return html format resume make it diffrent colour scheme andthe resume should project m skill set  also make it look like professional , create side margins table also make the text gradient for heddings like professional summary
+IMPORTANT: wherever the profile photo goes in the resume, output exactly this tag and nothing else:
+<img src="PROFILE_IMAGE_PLACEHOLDER" style="width:100px;height:100px;border-radius:50%;">
+do not draw or generate any other image tag or placeholder circle yourself"""
 
 final_prompt = prompt + prompt_reader()
 
