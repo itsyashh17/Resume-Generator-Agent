@@ -11,6 +11,7 @@ import numpy as np
 from langchain.messages import SystemMessage, HumanMessage
 from langchain.agents import create_agent
 from PIL import Image
+import base64
 
 # =========================FRONTEND==================
 st.title("AI RESUME MAKER & JOB APPLY AGENT")
@@ -132,11 +133,7 @@ user_info = st.text_area("Give your information: ")
 
 
 
-if user_photo is not None:
-  # Create a temporary file
-  with tempfile.NamedTemporaryFile(delete=False, suffix=".jpg") as tmp:
-    tmp.write(user_photo.getvalue())
-    tmp_path = tmp.name
+
 
 user_query = f"""user details: given below:
 resume info {user_info}
