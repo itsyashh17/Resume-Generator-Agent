@@ -128,8 +128,9 @@ profile_url = "https://s7d1.scene7.com/is/image/wbcollab/India_PM_Narendra_Modi-
 
 # Change this when required new resume by user, pass details
 
-user_info = st.text_input("Give your information: ")
-user_photo = st.sidebar.file_uploader("Upload pic", type = 'image/jpeg')
+user_info = st.text_area("Give your information: ")
+
+
 
 if user_photo is not None:
   # Create a temporary file
@@ -137,9 +138,9 @@ if user_photo is not None:
     tmp.write(user_photo.getvalue())
     tmp_path = tmp.name
 
-user_query = f"""Give Resume for Python Developer.
-    user details : {user_info}
-    use user profile image from given {tmp_path}"""
+user_query = f"""user details: given below:
+resume info {user_info}
+DEFAULT IF NOT GIVEN : PYTHON DEVLOPER RESUME"""
 
 final_query = final_prompt + user_query
 
