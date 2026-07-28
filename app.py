@@ -11,7 +11,6 @@ import numpy as np
 from langchain.messages import SystemMessage, HumanMessage
 from langchain.agents import create_agent
 from PIL import image
-import tempfile
 
 # =========================FRONTEND==================
 st.title("AI RESUME MAKER & JOB APPLY AGENT")
