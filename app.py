@@ -10,19 +10,22 @@ import pytesseract as pyt
 import numpy as np
 from langchain.messages import SystemMessage, HumanMessage
 from langchain.agents import create_agent
+from PIL import image
 import tempfile
 
 # =========================FRONTEND==================
-st.title("AI RESUME GENERATOR")
+st.title("AI RESUME MAKER & JOB APPLY AGENT")
+st.image("https://as1.ftcdn.net/jpg/15/63/07/38/1000_F_1563073820_YQIf3Lq65FyjOAG4zuuGOocZJPYuWvjF.jpg")
 
 GOOGLE_API_KEY = st.sidebar.text_input("Google Api Key", type = 'password')
 GROQ_API_KEY = st.sidebar.text_input("GROQ Api Key", type = 'password')
 TAVILY_API_KEY = st.sidebar.text_input("TAVILY Api Key", type = 'password')
 
-if not GOOGLE_API_KEY:
-  st.warning("Provide Google API key")
-
-
+if not (GOOGLE_API_KEY) and not (GROQ_API_KEY) nd not (TAVILY_API_KEY):
+  st.sidebar.warning("pass api keys")
+  st.stop()
+else:
+  st.success("API KEYS LOADED")
 # ============= MODEL and AGENT CODE====================
 # tool 1
 def search_latest_news_jobs(query):
@@ -93,6 +96,34 @@ and must show user input details
 System instructions: Only Give HTML code as output"""
 
 final_prompt = prompt + prompt_reader()
+
+FILE = st.sidebar.file_uploader(
+     "Choose an image file",
+  type=["jpg","jpeg","png","webp]
+  )
+
+if FILE is not None:
+    try:
+        image = Image.open(FILE)
+        st.sidebar.image(image,
+                         caption="Uploaded Image",
+                         use_container_width=True)
+        if image.mode in ("RGBA","P"):
+           image=image.convert("RGB")
+
+         base_name = os.path.splitext(FILE.name)[0]
+         save_path = f"{base_name}.jpg"
+
+         image.save(save_path,"JPEG")
+         st.sidebar.success(f" Image successfully saved as {save_path} !")
+
+    except Exception as e:
+           st.error(f"Error processing image: {e}")
+      
+
+#Save the image to the current working directory
+         
+
 
 profile_url = "https://s7d1.scene7.com/is/image/wbcollab/India_PM_Narendra_Modi-2?qlt=75&resMode=sharp2"
 
