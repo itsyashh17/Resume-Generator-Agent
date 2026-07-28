@@ -13,6 +13,8 @@ from langchain.agents import create_agent
 from PIL import Image
 import base64
 
+st.set_page_config(layout="wide")
+
 # =========================FRONTEND==================
 st.title("AI RESUME MAKER & JOB APPLY AGENT")
 st.image("https://as1.ftcdn.net/jpg/15/63/07/38/1000_F_1563073820_YQIf3Lq65FyjOAG4zuuGOocZJPYuWvjF.jpg")
