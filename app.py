@@ -165,9 +165,21 @@ if st.button("Generate Resume"):
   with st.spinner("Agent creating Resume..."):
     response = agent.invoke({'messages':[{'role':'user',"content":final_query}]})
     code = response['messages'][-1].content[-1]['text']
+
+if FILE is not None:
+  with open(save_path,"rb") as img_file:
+       b64_image =  base64.b64encode(img_file.read()).decode()
+  data_uri = "data:image/jpeg;base64,{b64_image}"
+  code=code.rplace("PROFILE_IMAGE_PLACEHOLDER",data_uri)
+
     
     st.html(code, width="stretch", unsafe_allow_javascript=True)
 
+#========================================= APPLY LIVE JOBS=========================================
+    st.divider()
+    response = agent.invoke({'messages':[{'role':'user',"content":job_prompt}]})
+    code = response['messages'][-1].content[-1]['text']
+    st.html(job_code, width="stretch", unsafe_allow_javascript=True)
 
 
 
