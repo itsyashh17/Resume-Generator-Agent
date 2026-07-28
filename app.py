@@ -99,7 +99,7 @@ final_prompt = prompt + prompt_reader()
 
 FILE = st.sidebar.file_uploader(
      "Choose an image file",
-  type=["jpg","jpeg","png","webp]
+  type=["jpg","jpeg","png","webp"]
   )
 
 if FILE is not None:
